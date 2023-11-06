@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Course;
+use App\Models\Vendor;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -23,7 +25,9 @@ class CourseController extends Controller
     public function create()
     {
         //
-        return view('Courses.create');
+        $categories = Category::orderBy('name')->get();
+        $vendors = Vendor::orderby('name')->get();
+        return view('Courses.create')->with('categories', $categories)->with('vendors', $vendors);
     }
 
     /**

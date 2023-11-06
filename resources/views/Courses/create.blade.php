@@ -47,6 +47,32 @@
                                 @enderror
                             </div>
                         </div>
+                        <div>
+                            <x-input-label for='category_id'>Category</x-input-label>
+                            <select name="category_id">
+                                <option selected disabled value="">Select Item</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('category_id')
+                                <x-input-label for='category_id'
+                                    class="text-red-800 font-bold">{{ $message }}</x-input-label>
+                            @enderror
+                        </div>
+                        <div>
+                            <x-input-label for='vendor_id'>vendor</x-input-label>
+                            <select name="vendor_id">
+                                <option selected disabled value="">Select Item</option>
+                                @foreach ($vendors as $vendor)
+                                    <option value="{{ $vendor->id }}">{{ $vendor->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('vendor_id')
+                                <x-input-label for='vendor_id'
+                                    class="text-red-800 font-bold">{{ $message }}</x-input-label>
+                            @enderror
+                        </div>
                         <div class="flex justify-end mt-3">
                             <x-primary-button>
                                 Save
