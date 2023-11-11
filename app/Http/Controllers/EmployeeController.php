@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use Exception;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -23,7 +24,7 @@ class EmployeeController extends Controller
     public function create()
     {
         //
-
+        return view('employees.create');
     }
 
     /**
@@ -32,6 +33,24 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate(
+            [
+                'salary' => 'required',
+            ]
+        );
+
+        try {
+            //code...
+            $employees = new Employee();
+            $employees->job_title = $request->job_title;
+            $employees->job_title = $request->salary;
+            $employees->job_title = $request->hire_date;
+            $employees->save();
+            return to_route('employees.index')->with('status', 'Employees Added');
+        } catch (Exception $e) {
+            //throw $th;
+            return to_route('employees.index')->with('status', $e->getMessage());
+        }
     }
 
     /**
@@ -40,6 +59,7 @@ class EmployeeController extends Controller
     public function show(string $id)
     {
         //
+
     }
 
     /**
@@ -48,6 +68,8 @@ class EmployeeController extends Controller
     public function edit(string $id)
     {
         //
+        $employees = Employee::find($id);
+        return view('employees.edit', 'employees');
     }
 
     /**
@@ -56,7 +78,22 @@ class EmployeeController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $request->validate(['salary' => 'required']);
+        try {
+            $employees = Employee::find($id);
+            $employees->job_title = $request->job_title;
+            $employees->job_title = $request->salary;
+            $employees->job_title = $request->hire_date;
+            $employees->save();
+            return to_route('employees.index')->with('status', 'Employees Updated');
+        } catch (Exception $e) {
+            //throw $th;
+            return to_route('employees.index')->with('status', $e->getMessage());
+        }
     }
+
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -64,5 +101,13 @@ class EmployeeController extends Controller
     public function destroy(string $id)
     {
         //
+        try {
+            //code...
+            Employee::destroy($id);
+            return to_route('employees.index')->with('status', 'Employees Deleted');
+        } catch (Exception $e) {
+            //throw $th;
+            return to_route('employees.index')->with('status', $e->getMessage());
+        }
     }
 }
