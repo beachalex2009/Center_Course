@@ -53,6 +53,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('vendors', VendorController::class)->except('show');
     Route::resource('Courses', CourseController::class)->except('show');
+    Route::resource('Employees', EmployeeController::class)->except('show');
     Route::resource('ClassRoom', ClassRoomController::class)->except('show');
     Route::resource('Schedule', ScheduleController::class)->except('show');
     Route::resource('StudentRegister', StudentRegisterController::class)->except('show');

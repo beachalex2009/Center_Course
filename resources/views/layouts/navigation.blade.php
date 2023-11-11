@@ -36,6 +36,11 @@
                         Courses
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('Employees.index')" :active="request()->routeIs('Employees.index')">
+                        Employees
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -110,6 +115,9 @@
             <x-responsive-nav-link :href="route('Courses.index')" :active="request()->routeIs('Courses.index')">
                 Courses
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('Employees.index')" :active="request()->routeIs('Employees.index')">
+                Employees
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
@@ -118,7 +126,6 @@
                 <div class="text-base font-medium text-gray-800">{{ Auth::user()->name }}</div>
                 <div class="text-sm font-medium text-gray-500">{{ Auth::user()->email }}</div>
             </div>
-
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}

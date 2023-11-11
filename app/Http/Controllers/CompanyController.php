@@ -39,7 +39,11 @@ class CompanyController extends Controller
             // dd($request->except("_token"));
             // dd($request->name);
             // dd($request->all());
-            Company::create($request->except("_token"));
+            // Company::create($request->except("_token"));
+            $company = new company();
+            $company->name = $request->name;
+            $company->owner = $request->owner;
+            $company->save();
             // session()->put('status', 'New Company Added');
             // session()->forget('status');
             // session()->flash('status', 'New Company Added');
