@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            Edit Company
+            Edit Employee
         </h2>
     </x-slot>
 
@@ -18,29 +18,38 @@
                             </ul>
                         </div>
                     @endif --}}
-                    <form method="POST" action="{{ route('companies.update', $company->id) }}"
+                    <form method="POST" action="{{ route('Employees.update', $employee->id) }}"
                         class="border rounded-2xl p-2">
                         @csrf
                         @method('PATCH')
                         <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <x-input-label for='name'>Name</x-input-label>
-                                <x-text-input value="{{ old('name', $company->name) }}" class="w-full"
-                                    name='name'></x-text-input>
-                                @error('name')
-                                    <x-input-label for='name'
+                                <x-input-label for='job_title'>Job_title</x-input-label>
+                                <x-text-input value="{{ old('Job_title', $employee->Job_title) }}" class="w-full"
+                                    name='job_title'></x-text-input>
+                                @error('job_title')
+                                    <x-input-label for='job_title'
                                         class="text-red-800 font-bold">{{ $message }}</x-input-label>
                                 @enderror
                             </div>
                             <div>
-                                <x-input-label for='owner'>Owner</x-input-label>
-                                <x-text-input value="{{ old('owner', $company->owner) }}" class="w-full"
-                                    name='owner'></x-text-input>
-                                @error('owner')
-                                    <x-input-label for='owner'
+                                <x-input-label for='salary'>Salary</x-input-label>
+                                <x-text-input value="{{ old('salary') }}" class="w-full" name='salary'></x-text-input>
+                                @error('salary')
+                                    <x-input-label for='salary'
                                         class="text-red-800 font-bold">{{ $message }}</x-input-label>
                                 @enderror
                             </div>
+                            <div>
+                                <x-input-label for='hire_date'>Hire_date</x-input-label>
+                                <x-text-input value="{{ old('hire_date') }}" class="w-full"
+                                    name='hire_date'></x-text-input>
+                                @error('hire_date')
+                                    <x-input-label for='hire_date'
+                                        class="text-red-800 font-bold">{{ $message }}</x-input-label>
+                                @enderror
+                            </div>
+                        </div>
                         </div>
                         <div class="flex justify-end mt-3">
                             <x-primary-button>

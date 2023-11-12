@@ -51,10 +51,10 @@ class EmployeeController extends Controller
             $employees->job_title = $request->salary;
             $employees->job_title = $request->hire_date;
             $employees->save();
-            return to_route('employees.index')->with('status', 'Employees Added');
+            return to_route('Employees.index')->with('status', 'Employees Added');
         } catch (Exception $e) {
             //throw $th;
-            return to_route('employees.index')->with('status', $e->getMessage());
+            return to_route('Employees.index')->with('status', $e->getMessage());
         }
     }
 
@@ -73,8 +73,8 @@ class EmployeeController extends Controller
     public function edit(string $id)
     {
         //
-        $employees = Employee::find($id);
-        return view('employees.edit', compact('employees'));
+        $employee = Employee::findOrfail($id);
+        return view('employees.edit', compact('employee'));
     }
 
     /**
@@ -85,15 +85,16 @@ class EmployeeController extends Controller
         //
         $request->validate(['salary' => 'required']);
         try {
-            $employees = Employee::find($id);
-            $employees->job_title = $request->job_title;
-            $employees->job_title = $request->salary;
-            $employees->job_title = $request->hire_date;
-            $employees->save();
-            return to_route('employees.index')->with('status', 'Employees Updated');
+            // $employees = Employee::find($id);
+            // $employees->job_title = $request->job_title;
+            // $employees->job_title = $request->salary;
+            // $employees->job_title = $request->hire_date;
+            // $employees->save();
+            Employee::find($id)->update($request->except('_token'));
+            return to_route('Employees.index')->with('status', 'Employees Updated');
         } catch (Exception $e) {
             //throw $th;
-            return to_route('employees.index')->with('status', $e->getMessage());
+            return to_route('Employees.index')->with('status', $e->getMessage());
         }
     }
 
@@ -109,10 +110,10 @@ class EmployeeController extends Controller
         try {
             //code...
             Employee::destroy($id);
-            return to_route('employees.index')->with('status', 'Employees Deleted');
+            return to_route('Employees.index')->with('status', 'Employees Deleted');
         } catch (Exception $e) {
             //throw $th;
-            return to_route('employees.index')->with('status', $e->getMessage());
+            return to_route('Employees.index')->with('status', $e->getMessage());
         }
     }
 }
