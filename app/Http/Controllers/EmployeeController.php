@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Branch;
 use App\Models\Employee;
+use App\Models\User;
+
 use Exception;
 use Illuminate\Http\Request;
 
@@ -24,7 +27,9 @@ class EmployeeController extends Controller
     public function create()
     {
         //
-        return view('employees.create');
+        $users = User::orderBy('name')->get();
+        $branches = Branch::orderby('name')->get();
+        return view('employees.create')->with('users', $users)->with('branches', $branches);
     }
 
     /**
