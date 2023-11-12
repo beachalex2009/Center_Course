@@ -38,7 +38,7 @@
             <div class="p-6 text-gray-900">
                 <div class="flex justify-end">
                     <x-primary-button class="bg-red-800">
-                        <a href="{{ route('employees.create') }}">Add New Company</a>
+                        <a href="{{ route('Employees.create') }}">Add New Employee</a>
                     </x-primary-button>
                 </div>
                 <!-- component -->
@@ -55,15 +55,15 @@
                                             </th>
                                             <th scope="col"
                                                 class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                                job_title
+                                                Job_Title
                                             </th>
                                             <th scope="col"
                                                 class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                                salary
+                                                Salary
                                             </th>
                                             <th scope="col"
                                                 class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                                hire_date
+                                                Hire_Date
                                             </th>
                                             <th scope="col"
                                                 class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
@@ -93,19 +93,19 @@
                                                 </td>
                                                 <td
                                                     class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                    {{ $company->created_at }}
+                                                    {{ $employee->created_at }}
                                                 </td>
                                                 <td>
                                                     <div class="flex justify-between">
 
                                                         <div>
-                                                            <a href="{{ route('employees.edit', $employee->id) }}"> <i
+                                                            <a href="{{ route('Employees.edit', $employee->id) }}"> <i
                                                                     class="fa-solid fa-pen-to-square"></i></a>
 
                                                         </div>
                                                         <div>
                                                             <form method="POST"
-                                                                action="{{ route('employees.delete', $employee->id) }}">
+                                                                action="{{ route('Employees.destroy', $employee->id) }}">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button type="submit"> <i class="fa-solid fa-trash"

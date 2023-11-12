@@ -5,6 +5,11 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VendorController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ClassRoomController;
+use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\StudentRegisterControlle;
+
 use App\Models\Company;
 use Illuminate\Support\Facades\Route;
 
