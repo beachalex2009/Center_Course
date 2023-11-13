@@ -46,11 +46,12 @@ class EmployeeController extends Controller
 
         try {
             //code...
-            $employees = new Employee();
-            $employees->job_title = $request->job_title;
-            $employees->job_title = $request->salary;
-            $employees->job_title = $request->hire_date;
-            $employees->save();
+            // $employees = new Employee();
+            // $employees->job_title = $request->job_title;
+            // $employees->job_title = $request->salary;
+            // $employees->job_title = $request->hire_date;
+            // $employees->save();
+            Employee::created($request->except('_token'));
             return to_route('Employees.index')->with('status', 'Employees Added');
         } catch (Exception $e) {
             //throw $th;
