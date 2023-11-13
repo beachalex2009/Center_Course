@@ -99,7 +99,7 @@ class CourseController extends Controller
     {
         //
         try {
-            $course = course::destroy($id);
+            course::destroy($id);
             return to_route('Courses.index')->with('status', 'course Deleted');
         } catch (Exception $e) {
             return to_route('Courses.index')->with('status', $e->getMessage());
