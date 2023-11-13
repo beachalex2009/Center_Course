@@ -73,8 +73,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($employees as $employee)
+                                        @forelse ($employees as  $key => $employee)
                                             <tr
+                                            class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
+                                                <td
+                                                    class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                    {{ $employees->firstItem() + $key }}</td>
+                                                <td
                                                 class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
                                                 <td
                                                     class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
@@ -117,6 +122,7 @@
                                             </tr>
                                         @empty
                                         @endforelse
+                                        {{$employees->links()}}
                                     </tbody>
                                 </table>
                             </div>
