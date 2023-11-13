@@ -122,9 +122,9 @@
                                             </tr>
                                         @empty
                                         @endforelse
-                                        {{$employees->links()}}
                                     </tbody>
                                 </table>
+                                {{$employees->links()}}
                             </div>
                         </div>
                     </div>
