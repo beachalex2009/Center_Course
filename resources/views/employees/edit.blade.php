@@ -25,7 +25,7 @@
                         <div class="grid grid-cols-2 gap-4">
                             <div>
                                 <x-input-label for='job_title'>Job_title</x-input-label>
-                                <x-text-input value="{{ old('Job_title', $employee->Job_title) }}" class="w-full"
+                                <x-text-input value="{{ old('job_title', $employee->job_title) }}" class="w-full"
                                     name='job_title'></x-text-input>
                                 @error('job_title')
                                     <x-input-label for='job_title'
@@ -34,7 +34,7 @@
                             </div>
                             <div>
                                 <x-input-label for='salary'>Salary</x-input-label>
-                                <x-text-input value="{{ old('salary') }}" class="w-full" name='salary'></x-text-input>
+                                <x-text-input value="{{ old('salary', $employee->salary) }}" class="w-full" name='salary'></x-text-input>
                                 @error('salary')
                                     <x-input-label for='salary'
                                         class="text-red-800 font-bold">{{ $message }}</x-input-label>
@@ -42,7 +42,7 @@
                             </div>
                             <div>
                                 <x-input-label for='hire_date'>Hire_date</x-input-label>
-                                <x-text-input value="{{ old('hire_date') }}" class="w-full"
+                                <x-text-input value="{{ old('hire_date',$employee->hire_date) }}" class="w-full"
                                     name='hire_date'></x-text-input>
                                 @error('hire_date')
                                     <x-input-label for='hire_date'
