@@ -70,7 +70,7 @@
                                 @endforeach
                             </select>
                             @error('branch_id')
-                                <x-input-label for='vendor_id'
+                                <x-input-label for='branch_id'
                                     class="text-red-800 font-bold">{{ $message }}</x-input-label>
                             @enderror
                         </div>
