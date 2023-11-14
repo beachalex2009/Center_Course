@@ -73,17 +73,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($employees as  $key => $employee)
+                                        @forelse ($employees as $key => $employee)
                                             <tr
-                                            class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                                                <td
-                                                    class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                                    {{ $employees->firstItem() + $key }}</td>
-                                                <td
                                                 class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
                                                 <td
                                                     class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                                    {{ $loop->iteration }}</td>
+                                                    {{ $employees->firstItem() + $key }}</td>
                                                 <td
                                                     class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                     {{ $employee->job_title }}
@@ -124,7 +119,7 @@
                                         @endforelse
                                     </tbody>
                                 </table>
-                                {{$employees->links()}}
+                                {{ $employees->links() }}
                             </div>
                         </div>
                     </div>
