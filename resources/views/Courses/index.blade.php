@@ -4,7 +4,14 @@
             Courses
         </h2>
     </x-slot>
-
+    <div class="py-5 p-1 m-3 rounded bg-white">
+        <form action="{{ route('Courses.index') }}">
+            <div class="w-1/2 text-center" style="margin:  0 auto">
+                <x-input-label for='search'>Search</x-input-label>
+                <x-text-input value="{{ request()->get('search') }}" placeholder="Course Name "
+                    class="w-full" name='search'></x-text-input>
+            </div>
+        </form>
     <div class="py-5 p-1 m-3 rounded bg-white">
         <div class="mx-auto max-w-full sm:px-3 lg:px-4">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
@@ -119,7 +126,8 @@
                                         @endforelse
                                     </tbody>
                                 </table>
-                                {{ $Courses->links() }}
+                               
+                            {{$Courses->links()}}
 
                             </div>
                         </div>

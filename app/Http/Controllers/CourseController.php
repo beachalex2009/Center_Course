@@ -13,11 +13,20 @@ class CourseController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        return view('Courses.index', ['Courses' => Course::latest()->paginate(20)]);
+        $Courses = Course::query();
+        if ($request->has('search')) {
+            $Courses = Course::where('name', 'like', '%' . $request->search . '%')->paginate(25);
+        }
+
+        // return view('Courses.index', ['Courses' => Course::latest()->paginate(20)]);
+
+        return view('Courses.index', compact('Courses'));
     }
+
+
 
     /**
      * Show the form for creating a new resource.
