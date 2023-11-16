@@ -18,12 +18,10 @@ class CourseController extends Controller
         //
         $Courses = Course::query();
         if ($request->has('search')) {
-            $Courses = Course::where('name', 'like', '%' . $request->search . '%')->paginate(25);
+            $Courses->where('name', 'like', '%' . $request->search . '%')->paginate(25);
         }
 
-        // return view('Courses.index', ['Courses' => Course::latest()->paginate(20)]);
-
-        return view('Courses.index', compact('Courses'));
+        return view('Courses.index', ['Courses' => $Courses->paginate(20)]);
     }
 
 

@@ -19,9 +19,10 @@ class EmployeeController extends Controller
         //
         $employees = Employee::query();
         if ($request->has('search')) {
-            $employees = Employee::where('job_title', 'like', '%' . $request->search . '%')->paginate(20);
+            $employees->where('job_title','like','%'.$request->search.'%');
         }
-        return view('employees.index', compact('employees'));
+
+        return view('employees.index', ['employees'=>$employees->paginate(20)]);
     }
 
     /**
