@@ -9,6 +9,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ClassRoomController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\StudentRegisterControlle;
+use App\Http\Controllers\ManagerController;
 
 use App\Models\Company;
 use Illuminate\Support\Facades\Route;
@@ -59,9 +60,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('vendors', VendorController::class)->except('show');
     Route::resource('Courses', CourseController::class)->except('show');
     Route::resource('Employees', EmployeeController::class)->except('show');
+    Route::resource('Managers', ManagerController::class)->except('show');
     Route::resource('ClassRoom', ClassRoomController::class)->except('show');
     Route::resource('Schedule', ScheduleController::class)->except('show');
-    Route::resource('StudentRegister', StudentRegisterController::class)->except('show');
+    // Route::resource('StudentRegister', StudentRegisterController::class)->except('show');
 });
 
 require __DIR__ . '/auth.php';

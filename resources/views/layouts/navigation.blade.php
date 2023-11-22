@@ -41,6 +41,11 @@
                         Employees
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('Managers.index')" :active="request()->routeIs('Managers.index')">
+                        Managers
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -117,6 +122,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('Employees.index')" :active="request()->routeIs('Employees.index')">
                 Employees
+            </x-responsive-nav-link>
+              <x-responsive-nav-link :href="route('Managers.index')" :active="request()->routeIs('Managers.index')">
+                Managers
             </x-responsive-nav-link>
         </div>
 
