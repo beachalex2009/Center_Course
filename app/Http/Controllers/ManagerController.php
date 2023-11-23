@@ -11,11 +11,16 @@ class ManagerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        $Managers = Manager::paginate(25);
-        return view ('Managers.index',compact('Managers'));
+
+        $Managers = Manager::query();
+        if ($request->has('search')) {
+            $Managers->where('name','like','%'.$request->search.'%');
+        }
+        return view('Managers.index', ['Managers'=>$Managers->paginate(20)]);
+
+
 
 
     }
@@ -27,7 +32,9 @@ class ManagerController extends Controller
     {
         //
         $companies = Company::all();
-        return view ('Managers.create', compact('companies') );
+        // return view ('Managers.create', compact('companies') );
+        return view ('Managers.create')->with('companies',$companies);
+
     }
 
     /**
@@ -47,7 +54,7 @@ class ManagerController extends Controller
             return to_route ('Managers.index')->with('status', $e->getMessage());
         }
     }
-    
+
     /**
      * Display the specified resource.
      */
@@ -62,6 +69,10 @@ class ManagerController extends Controller
     public function edit(string $id)
     {
         //
+        $Manager = Manager::findOrFail($id);
+        return view('Managers.edit' , compact('Manager')) ;
+
+
     }
 
     /**
@@ -70,6 +81,17 @@ class ManagerController extends Controller
     public function update(Request $request, string $id)
     {
         //
+
+        $request->validate(['name' => 'required']) ;
+        try {
+            //code...
+        Manager::find($id)->update($request->except('_token'));
+        return to_route('Managers.index')->with('status','Manager Updated');
+        } catch (Exception $e) {
+            //throw $th;
+            return to_route('Managers.index')->with('status',$e->getMessage());
+        }
+
     }
 
     /**
@@ -78,5 +100,15 @@ class ManagerController extends Controller
     public function destroy(string $id)
     {
         //
+
+        try {
+            //code...
+        Manager::destroy($id);
+        return to_route('Managers.index')->with('status','Manager Deleted');
+        } catch (Exception $e) {
+            return to_route('Managers.index')->with('status',$e->getMessage());
+        }
+
+
     }
 }
