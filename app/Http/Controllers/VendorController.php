@@ -12,12 +12,18 @@ class VendorController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request )
     {
         // return view('vendors.index', ['vendors' => Vendor::latest()->paginate(20)]);
 
-        $vendors = Vendor::latest()->paginate(20);
-        return view('vendors.index',compact('vendors'));
+        $vendors=Vendor::query();
+        if ($request->has('search')) {
+            # code...
+            $vendors->where('name','like','%' .$request->search . '%');
+        }
+        return view('vendors.index', ['vendors'=>$vendors->paginate(20)]);
+
+       
     }
 
     /**
