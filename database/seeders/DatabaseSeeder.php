@@ -33,9 +33,9 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        foreach (range(1, 500) as $i) {
-            Manager::find($i)->update(['company_id' => $i]);
-            Employee::find($i)->update(['user_id' => $i]);
-        }
+        // foreach (range(1, 500) as $i) {
+        //     Manager::find($i)->update(['company_id' => $i]);
+        //     Employee::find($i)->update(['user_id' => $i]);
+        // }
     }
 }
