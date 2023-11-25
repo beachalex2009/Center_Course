@@ -12,12 +12,16 @@ class CompanyController extends Controller
     {
         $this->middleware('age');
     } */
-    public function index()
+    public function index(Request $request)
     {
-
+        $companies = Company::query();
+            if ($request->has('search')) {
+                # code...
+                $companies->where('name','like','%'.$request->search.'%');
+            }
         // $companies = Company::latest()->get();
-        $companies = Company::paginate(25);
-        return view('companies.index', compact('companies'));
+        // $companies = Company::paginate(25);
+        return view('companies.index', ['companies'=>$companies->paginate(25)]);
     }
 
     public function create()
