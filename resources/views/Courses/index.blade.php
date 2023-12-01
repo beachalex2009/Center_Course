@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            Courses
+            {{ __('messages.Courses') }}
         </h2>
     </x-slot>
     <div class="py-5 p-1 m-3 rounded bg-white">
@@ -126,7 +126,7 @@
                                         @endforelse
                                     </tbody>
                                 </table>
-                               
+
                             {{$Courses->links()}}
 
                             </div>
